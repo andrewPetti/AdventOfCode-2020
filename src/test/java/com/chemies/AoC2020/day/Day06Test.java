@@ -16,8 +16,12 @@ class Day06Test {
     }
 
     @Test
-    public void partA(){
-        assertEquals(1, _subject.partA(InputsDay06.INPUTS));
+    public void partA_sumOfAllYES(){
+        assertEquals(11, _subject.partA(InputsDay06.SAMPLE));
     }
 
+    @Test
+    public void partB_sumWherePArtyAllYES(){
+        assertEquals(6L, _subject.partB(InputsDay06.SAMPLE));
+    }
 }
