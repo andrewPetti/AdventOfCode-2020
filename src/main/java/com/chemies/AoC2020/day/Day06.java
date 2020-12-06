@@ -15,25 +15,15 @@ public class Day06 extends AbstractDay {
     }
 
     public long partA(String filename) {
-        ImmutableList<String> answers = _fileHelper.fileToStringList(filename);
+        ImmutableList<ImmutableList<String>> answers = _fileHelper.fileToGroupedList(filename);
 
-        //ArrayList<String> combinedList = new ArrayList<>();
         long sum = 0;
-        StringBuilder combined = new StringBuilder();
         for (int i = 0; i < answers.size(); i++) {
-            String line = answers.get(i);
-            if (line.isEmpty()) {
-
-                sum += combined
-                        .chars()
-                        .distinct()
-                        .count();
-                combined = new StringBuilder();
-            } else {
-                combined.append(line);
-            }
+            ImmutableList<String> grouped = answers.get(i);
+            StringBuilder combined = new StringBuilder();
+            grouped.forEach(combined::append);
+            sum += combined.toString().chars().distinct().count();
         }
-        sum += combined.chars().distinct().count();
         return sum;
     }
 
@@ -44,22 +34,15 @@ public class Day06 extends AbstractDay {
     }
 
     public long partB(String filename) {
-        ImmutableList<String> answers = _fileHelper.fileToStringList(filename);
+        ImmutableList<ImmutableList<String>> answers = _fileHelper.fileToGroupedList(filename);
         long sum = 0;
-        StringBuilder combined = new StringBuilder();
-        int partySize = 0;
         for (int i = 0; i < answers.size(); i++) {
-            String line = answers.get(i);
-            if (line.isEmpty()) {
-                sum += countPartyHasSameAnswer(combined.toString(), partySize);
-                combined = new StringBuilder();
-                partySize = 0;
-            } else {
-                combined.append(line);
-                partySize++;
-            }
+            ImmutableList<String> group = answers.get(i);
+            int partySize = group.size();
+            StringBuilder combined = new StringBuilder();
+            group.forEach(combined::append);
+            sum += countPartyHasSameAnswer(combined.toString(), partySize);
         }
-        sum += countPartyHasSameAnswer(combined.toString(), partySize);
         return sum;
     }
 
@@ -71,13 +54,13 @@ public class Day06 extends AbstractDay {
         };
         comb.partySize = partySize;
         comb.combined = line;
-        @SuppressWarnings("SpellCheckingInspection") String _letters = "abcdefghijklmnopqrstuvwxyz";
-        _letters.chars()
-                .mapToObj(j -> (char) j)
-                .mapToLong(k -> CharMatcher.is(k)
+        String letters = "abcdefghijklmnopqrstuvwxyz";
+        letters.chars()
+                .mapToLong(k -> CharMatcher.is((char) k)
                         .countIn(comb.combined))
                 .filter(count -> count == comb.partySize)
                 .forEach(count -> comb.sum++);
+
         return comb.sum;
     }
 

@@ -2,11 +2,11 @@ package com.chemies.AoC2020.util;
 
 
 import com.google.common.collect.ImmutableList;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.Buffer;
 import java.util.ArrayList;
 
 public class FileHelper {
@@ -14,8 +14,9 @@ public class FileHelper {
     public ImmutableList<String> fileToStringList(String filename) {
         ArrayList<String> list = new ArrayList<>();
 
-        try{ BufferedReader reader = getReader(filename);
-           String line = reader.readLine().trim();
+        try {
+            BufferedReader reader = getReader(filename);
+            String line = reader.readLine().trim();
             while (line != null) {
                 list.add(line);
                 line = reader.readLine();
@@ -28,9 +29,10 @@ public class FileHelper {
     }
 
 
-    public ImmutableList<Integer> fileToIntegerList(String filename){
+    public ImmutableList<Integer> fileToIntegerList(String filename) {
         ArrayList<Integer> list = new ArrayList<>();
-        try{ BufferedReader reader = getReader(filename);
+        try {
+            BufferedReader reader = getReader(filename);
             String line = reader.readLine().trim();
             while (line != null) {
                 list.add(Integer.parseInt(line));
@@ -43,8 +45,33 @@ public class FileHelper {
         return ImmutableList.copyOf(list);
     }
 
+    public ImmutableList<ImmutableList<String>> fileToGroupedList(String filename) {
+        ArrayList<ImmutableList<String>> outerList = new ArrayList<>();
+        try {
+            BufferedReader reader = getReader(filename);
+            String line = reader.readLine().trim();
+            ArrayList<String> innerList = new ArrayList<>();
+            boolean cont = true;
+            while (cont) {
+                if (line == null || line.isEmpty()) {
+                    outerList.add(ImmutableList.copyOf(innerList));
+                    innerList.clear();
+                    if (line == null) {
+                        cont = false;
+                    }
+                } else {
+                    innerList.add(line);
+                }
+                line = reader.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ImmutableList.copyOf(outerList);
+    }
+
     private BufferedReader getReader(String filename) throws FileNotFoundException {
-        BufferedReader reader = null;
+        BufferedReader reader;
         try {
             reader =
                     new BufferedReader(new FileReader("D:\\Git\\AdventOfCode-2020\\src\\main\\java\\com\\chemies\\AoC2020\\data\\inputs\\" + filename));
