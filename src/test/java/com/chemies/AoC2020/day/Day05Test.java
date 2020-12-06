@@ -2,7 +2,6 @@ package com.chemies.AoC2020.day;
 
 
 import com.chemies.AoC2020.data.InputsDay05;
-import days.Day05;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

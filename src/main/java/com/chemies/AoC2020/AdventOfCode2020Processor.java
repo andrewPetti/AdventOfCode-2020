@@ -12,7 +12,7 @@ public class AdventOfCode2020Processor{
 
         boolean stop = false;
         AbstractDay day = null;
-        int choice = 0;
+        int choice;
         while (!stop) {
             try {
                 System.out.println("Please enter Day to execute or 99 to exit: ");
@@ -36,9 +36,11 @@ public class AdventOfCode2020Processor{
                         day = new Day04();
                         break;
                     case 5:
-                        day = new days.Day05();
+                        day = new Day05();
                         break;
                     case 6:
+                        day = new Day06();
+                        break;
                     case 7:
                     case 8:
                     case 9:

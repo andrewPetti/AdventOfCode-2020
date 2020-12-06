@@ -1,4 +1,4 @@
-package days;
+package com.chemies.AoC2020.day;
 
 import com.chemies.AoC2020.data.InputsDay05;
 import com.chemies.AoC2020.day.*;
@@ -15,7 +15,7 @@ public class Day05 extends AbstractDay {
   public void executePartA() {
     String filename = InputsDay05.inputs;
     int result = partA(filename);
-    System.out.println(String.format("PartA Ans: " + formatAnswer(result)));
+    System.out.println("PartA Ans: " + formatAnswer(result));
   }
 
   public int partA(String filename) {
@@ -39,20 +39,18 @@ public class Day05 extends AbstractDay {
   public void executePartB() {
     String filename = InputsDay05.inputs;
     int result = partB(filename);
-    System.out.println(String.format("PartA Ans: " + formatAnswer(result)));
+    System.out.println("PartA Ans: " + formatAnswer(result));
   }
 
   private int partB(String filename) {
     var seatList =
         new Object() {
-          ArrayList<Integer> list = new ArrayList<Integer>();
+          ArrayList<Integer> list = new ArrayList<>();
         };
     ImmutableList<String> list = _fileHelper.fileToStringList(filename);
 
     list.forEach(
-        pass -> {
-          seatList.list.add(calcSeat(pass));
-        });
+        pass -> seatList.list.add(calcSeat(pass)));
 
     ImmutableSet<Integer> seatSet = ImmutableSet.copyOf(seatList.list);
     for (int i = 2; i <= 858; i++) {
