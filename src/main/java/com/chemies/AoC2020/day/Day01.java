@@ -1,6 +1,6 @@
 package com.chemies.AoC2020.day;
 
-import com.chemies.AoC2020.data.*;
+import com.chemies.AoC2020.data.InputDay01;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.chemies.AoC2020.day;
 
-import com.chemies.AoC2020.data.*;
+import com.chemies.AoC2020.data.InputsDay06;
 import com.google.common.base.CharMatcher;
 import com.google.common.collect.ImmutableList;
 
