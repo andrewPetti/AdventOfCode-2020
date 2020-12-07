@@ -1,6 +1,6 @@
 package com.chemies.AoC2020.day;
 
-import com.chemies.AoC2020.data.InputDay01;
+import com.chemies.AoC2020.data.*;
 
 import java.util.List;
 
@@ -14,8 +14,7 @@ public class Day01 extends AbstractDay {
 
         Integer product = partA(inputs);
         System.out.println(
-                String.format(
-                        "The product of the two numbers that add to 2020 is:  " + formatAnswer(product)));
+                "The product of the two numbers that add to 2020 is:  " + formatAnswer(product));
     }
 
     public Integer partA(List<Integer> inputs) {
@@ -25,8 +24,7 @@ public class Day01 extends AbstractDay {
                 Integer second = inputs.get(j);
 
                 if (first + second == 2020) {
-                    Integer product = first * second;
-                    return product;
+                    return first * second;
                 }
             }
         }
@@ -39,7 +37,7 @@ public class Day01 extends AbstractDay {
 
         List<Integer> inputs = InputDay01.rawInput; // InputDay01.sample;
         Integer product = partB(inputs);
-        System.out.println( "The product of the three numbers that add to 2020 is: "
+        System.out.println("The product of the three numbers that add to 2020 is: "
                 + formatAnswer(product));
     }
 
@@ -52,8 +50,7 @@ public class Day01 extends AbstractDay {
                     Integer third = inputs.get(k);
 
                     if (first + second + third == 2020) {
-                        Integer product = first * second * third;
-                        return product;
+                        return first * second * third;
                     }
                 }
             }

@@ -4,7 +4,7 @@ import com.chemies.AoC2020.data.InputDay01;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Day01Test {
     private Day01 _subject;

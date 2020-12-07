@@ -7,23 +7,23 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Day04Test {
-  private Day04 _subject;
+    private Day04 _subject;
 
-  @BeforeEach
-  void setup() {
-    _subject = new Day04();
-  }
+    @BeforeEach
+    void setup() {
+        _subject = new Day04();
+    }
 
-  @Test
-  public void partA_validPassports() {
-    int expected = 2;
+    @Test
+    public void partA_validPassports() {
+        int expected = 2;
 
-    assertEquals(expected, _subject.partA(InputDay04.sample));
-  }
+        assertEquals(expected, _subject.partA(InputDay04.sample));
+    }
 
-  @Test
-  public void partB_BadSample() {
-    int expected = 4;
-    assertEquals(expected, _subject.partB(InputDay04.sampleB));
-  }
+    @Test
+    public void partB_BadSample() {
+        int expected = 4;
+        assertEquals(expected, _subject.partB(InputDay04.sampleB));
+    }
 }
