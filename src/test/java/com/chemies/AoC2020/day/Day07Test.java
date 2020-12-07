@@ -16,13 +16,18 @@ class Day07Test {
     }
 
     @Test
-    public void partA_sumOfAllYES() {
-        assertEquals(-1, _subject.partA(InputsDay07.SAMPLE));
+    public void partA() {
+        assertEquals(4, _subject.partA(InputsDay07.SAMPLE));
     }
 
     @Test
-    public void partB() {
-        assertEquals(-1, _subject.partB(InputsDay07.SAMPLE));
+    public void partB_sampelB() {
+        assertEquals(126, _subject.partB(InputsDay07.SAMPLE_B));
+    }
+
+    @Test
+    public void partB_sampleA() {
+        assertEquals(32, _subject.partB(InputsDay07.SAMPLE));
     }
 
 }

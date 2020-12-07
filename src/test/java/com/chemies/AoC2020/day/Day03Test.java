@@ -1,13 +1,15 @@
 package com.chemies.AoC2020.day;
 
-import com.chemies.AoC2020.data.InputDay03;
+import com.chemies.AoC2020.data.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class Day03Test {
+public class
+
+Day03Test {
 
     private Day03 _subject;
 

@@ -4,7 +4,7 @@ import com.chemies.AoC2020.day.*;
 
 import java.util.Scanner;
 
-public class AdventOfCode2020Processor{
+public class AdventOfCode2020Processor {
     private static final Scanner _scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -42,6 +42,8 @@ public class AdventOfCode2020Processor{
                         day = new Day06();
                         break;
                     case 7:
+                        day = new Day07();
+                        break;
                     case 8:
                     case 9:
                     case 10:
@@ -74,7 +76,7 @@ public class AdventOfCode2020Processor{
             day.executeDay();
         }
     }
-    }
+}
 
 
 //}
