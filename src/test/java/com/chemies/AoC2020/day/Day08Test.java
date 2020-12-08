@@ -17,12 +17,13 @@ class Day08Test {
 
     @Test
     public void partA() {
-        assertEquals(4, _subject.partA(InputsDay08.SAMPLE));
+        assertEquals(5, _subject.partA(InputsDay08.SAMPLE));
     }
 
     @Test
     public void partB_sampelB() {
-        assertEquals(126, _subject.partB(InputsDay08.SAMPLE));
+        assertEquals(8
+                , _subject.partB(InputsDay08.SAMPLE));
     }
 
 }
