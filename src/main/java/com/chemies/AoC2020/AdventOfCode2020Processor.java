@@ -48,6 +48,8 @@ public class AdventOfCode2020Processor {
                         day = new Day08();
                         break;
                     case 9:
+                        day = new Day09();
+                        break;
                     case 10:
                     case 11:
                     case 12:

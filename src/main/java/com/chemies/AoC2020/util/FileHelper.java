@@ -45,6 +45,22 @@ public class FileHelper {
         return ImmutableList.copyOf(list);
     }
 
+    public ImmutableList<Long> fileToLongList(String filename) {
+        ArrayList<Long> list = new ArrayList<>();
+        try {
+            BufferedReader reader = getReader(filename);
+            String line = reader.readLine().trim();
+            while (line != null) {
+                list.add(Long.parseLong(line));
+                line = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ImmutableList.copyOf(list);
+    }
+
     public ImmutableList<ImmutableList<String>> fileToGroupedList(String filename) {
         ArrayList<ImmutableList<String>> outerList = new ArrayList<>();
         try {
