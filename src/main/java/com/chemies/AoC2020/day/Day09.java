@@ -3,6 +3,8 @@ package com.chemies.AoC2020.day;
 import com.chemies.AoC2020.data.InputsDay09;
 import com.google.common.collect.ImmutableList;
 
+import java.util.Collections;
+
 public class Day09 extends AbstractDay {
     private final String _filename = InputsDay09.INPUTS;
 
@@ -25,8 +27,8 @@ public class Day09 extends AbstractDay {
                     Long b = previousNumbers.get(k);
                     if (a + b == current) {
                         valid = true;
+                        break;
                     }
-
                 }
             }
             if (!valid) {
@@ -38,12 +40,35 @@ public class Day09 extends AbstractDay {
 
     @Override
     public void executePartB() {
-        int result = partB(_filename);
+        Long result = partB(_filename, 25);
         System.out.println("PartA Ans: " + formatAnswer(result));
     }
 
-    int partB(String filename) {
-        return 0;
+    Long partB(String filename, int preambleLength) {
+        ImmutableList<Long> numbers = _fileHelper.fileToLongList(filename);
+
+        Long badValue = partA(filename, preambleLength);
+
+        for (int i = 0; i < numbers.size(); i++) {
+            int pos = i + 1;
+            Long sum = numbers.get(i);
+            boolean cont = true;
+            while (cont) {
+                sum += numbers.get(pos);
+                if (sum > badValue) {
+                    cont = false;
+                } else if (sum < badValue) {
+                    pos++;
+                } else {
+                    return sumOfSmallestAndLargest(numbers.subList(i, pos + 1));
+                }
+            }
+        }
+        return 0L;
+    }
+
+    Long sumOfSmallestAndLargest(ImmutableList<Long> subList) {
+        return Collections.min(subList) + Collections.max(subList);
     }
 
     @Override
