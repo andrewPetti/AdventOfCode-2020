@@ -1,6 +1,6 @@
 package com.chemies.AoC2020.day;
 
-import com.chemies.AoC2020.data.InputsDay09;
+import com.chemies.AoC2020.data.InputsDay10;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,13 +16,25 @@ class Day10Test {
 
     @Test
     void executePartA() {
-        assertEquals(62
-                , _subject.partA(InputsDay09.SAMPLE));
+        assertEquals(7 * 5
+                , _subject.partA(InputsDay10.SAMPLE));
+    }
+
+    @Test
+    void executePartA_sampleB() {
+        assertEquals(22 * 10
+                , _subject.partA(InputsDay10.SAMPLEB));
     }
 
     @Test
     void executePartB() {
-        assertEquals(62
-                , _subject.partB(InputsDay09.SAMPLE));
+        assertEquals(8
+                , _subject.partB(InputsDay10.SAMPLE));
+    }
+
+    @Test
+    void executePartB_sampleB() {
+        assertEquals(19208
+                , _subject.partB(InputsDay10.SAMPLEB));
     }
 }
