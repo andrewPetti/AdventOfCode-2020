@@ -53,10 +53,17 @@ public class Day10 extends AbstractDay {
         // int[] toSort = rawAdapters.stream().toArray();
         //Collections.sort(toSort, Ordering.natural().nullsLast());
 
-        ArrayList<Integer> list = new ArrayList<>(rawAdapters);
-        list.sort(Ordering.natural().nullsLast());
+        ArrayList<Integer> rawlist = new ArrayList<>(rawAdapters);
+        rawlist.sort(Ordering.natural().nullsLast());
+        int first = 0;
+        int last = rawlist.get(rawlist.size() - 1) + 3;
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(0);
+        list.addAll(rawlist);
+        list.add(last);
 
-        ImmutableList<ArrayList<Integer>> adjacentLists = builldAdjacentLists(list);
+        ImmutableList<ArrayList<Integer>> adjacentLists = buildAdjacentLists(list);
+
         int count = 1;
 
 
@@ -90,14 +97,14 @@ public class Day10 extends AbstractDay {
         return count;
     }
 
-    private ImmutableList<ArrayList<Integer>> builldAdjacentLists(ArrayList<Integer> list) {
+    private ImmutableList<ArrayList<Integer>> buildAdjacentLists(ArrayList<Integer> list) {
         ArrayList<ArrayList<Integer>> adjacent = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             ArrayList<Integer> adj = new ArrayList<>();
             int current = list.get(i);
             for (int j = i + 1; j <= i + 3 && j < list.size(); j++) {
                 int val = list.get(i + 1);
-                if (val < i + 3) {
+                if (val <= current + 3) {
                     adj.add(j);
                 }
             }
