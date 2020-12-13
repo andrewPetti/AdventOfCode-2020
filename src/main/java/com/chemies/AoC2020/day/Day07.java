@@ -1,6 +1,6 @@
 package com.chemies.AoC2020.day;
 
-import com.chemies.AoC2020.data.InputsDay07;
+import com.chemies.AoC2020.data.Inputs;
 import com.google.common.collect.ImmutableList;
 
 import java.util.*;
@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Day07 extends AbstractDay {
     public static final String SHINY_GOLD = "shiny gold";
-    private final String _filename = InputsDay07.INPUTS;
+    private final String _filename = Inputs.DAY07_INPUT;
     private final String EMPTY_BAG = "no other bags.";
     private ImmutableList<String> _rules;
 

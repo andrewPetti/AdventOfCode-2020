@@ -1,6 +1,6 @@
 package com.chemies.AoC2020.day;
 
-import com.chemies.AoC2020.data.*;
+import com.chemies.AoC2020.data.Inputs;
 import com.google.common.base.CharMatcher;
 
 import java.io.BufferedReader;
@@ -11,9 +11,9 @@ public class Day02 extends AbstractDay {
 
     @Override
     public void executePartA() {
-        String filename = InputDay02.inputs;
+        String filename = Inputs.DAY02_INPUT;
         int valid = partA(filename);
-        System.out.println(String.format("Count of valid passwords is: " + formatAnswer(valid)));
+        System.out.println("Count of valid passwords is: " + formatAnswer(valid));
     }
 
     public int partA(String filename) {
@@ -45,7 +45,7 @@ public class Day02 extends AbstractDay {
 
     @Override
     public void executePartB() {
-        String filename = InputDay02.inputs;
+        String filename = Inputs.DAY02_INPUT;
         int valid = partB(filename);
         System.out.println("Count of valid passwords for part B is: " + formatAnswer(valid));
     }

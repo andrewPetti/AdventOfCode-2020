@@ -1,6 +1,6 @@
 package com.chemies.AoC2020.day;
 
-import com.chemies.AoC2020.data.*;
+import com.chemies.AoC2020.data.Inputs;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,12 +18,12 @@ public class Day04Test {
     public void partA_validPassports() {
         int expected = 2;
 
-        assertEquals(expected, _subject.partA(InputDay04.sample));
+        assertEquals(expected, _subject.partA(Inputs.DAY04_SAMPLE));
     }
 
     @Test
     public void partB_BadSample() {
         int expected = 4;
-        assertEquals(expected, _subject.partB(InputDay04.sampleB));
+        assertEquals(expected, _subject.partB(Inputs.DAY04_SAMPLE_B));
     }
 }

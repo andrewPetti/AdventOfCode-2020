@@ -1,6 +1,6 @@
 package com.chemies.AoC2020.day;
 
-import com.chemies.AoC2020.data.*;
+import com.chemies.AoC2020.data.Inputs;
 import com.google.common.collect.ImmutableList;
 import org.javatuples.Pair;
 
@@ -10,9 +10,9 @@ public class Day03 extends AbstractDay {
 
     @Override
     public void executePartA() {
-        String filename = InputDay03.inputs;
+        String filename = Inputs.DAY03_INPUT;
         int valid = partA(filename, 3, 1);
-        System.out.println(String.format("Count of valid passwords is: " + formatAnswer(valid)));
+        System.out.println("Count of valid passwords is: " + formatAnswer(valid));
     }
 
     public int partA(String filename, int right, int down) {
@@ -40,10 +40,9 @@ public class Day03 extends AbstractDay {
 
     @Override
     public void executePartB() {
-        String filename = InputDay03.inputs;
+        String filename = Inputs.DAY03_INPUT;
         int product = partB(filename);
-        System.out.println(
-                String.format("Product of the number of trees encountered is: " + formatAnswer(product)));
+        System.out.println("Product of the number of trees encountered is: " + formatAnswer(product));
     }
 
     public int partB(String filename) {

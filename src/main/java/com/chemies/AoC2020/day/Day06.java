@@ -1,12 +1,12 @@
 package com.chemies.AoC2020.day;
 
-import com.chemies.AoC2020.data.InputsDay06;
+import com.chemies.AoC2020.data.Inputs;
 import com.google.common.base.CharMatcher;
 import com.google.common.collect.ImmutableList;
 
 public class Day06 extends AbstractDay {
 
-    private final String _filename = InputsDay06.INPUTS;
+    private final String _filename = Inputs.DAY06_INPUT;
 
     @Override
     public void executePartA() {

@@ -1,6 +1,6 @@
 package com.chemies.AoC2020.day;
 
-import com.chemies.AoC2020.data.*;
+import com.chemies.AoC2020.data.Inputs;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 
@@ -10,7 +10,7 @@ public class Day05 extends AbstractDay {
 
     @Override
     public void executePartA() {
-        String filename = InputsDay05.inputs;
+        String filename = Inputs.DAY05_INPUT;
         int result = partA(filename);
         System.out.println("PartA Ans: " + formatAnswer(result));
     }
@@ -34,7 +34,7 @@ public class Day05 extends AbstractDay {
 
     @Override
     public void executePartB() {
-        String filename = InputsDay05.inputs;
+        String filename = Inputs.DAY05_INPUT;
         int result = partB(filename);
         System.out.println("PartA Ans: " + formatAnswer(result));
     }

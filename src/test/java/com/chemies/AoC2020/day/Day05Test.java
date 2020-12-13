@@ -1,7 +1,7 @@
 package com.chemies.AoC2020.day;
 
 
-import com.chemies.AoC2020.data.*;
+import com.chemies.AoC2020.data.Inputs;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +19,7 @@ public class Day05Test {
     public void partA_FindSeat() {
         int expected = 820;
 
-        assertEquals(expected, _subject.partA(InputsDay05.sample));
+        assertEquals(expected, _subject.partA(Inputs.DAY05_SAMPLE));
     }
 
     @Test

@@ -1,6 +1,6 @@
 package com.chemies.AoC2020.day;
 
-import com.chemies.AoC2020.data.*;
+import com.chemies.AoC2020.data.Inputs;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 
@@ -15,9 +15,9 @@ public class Day04 extends AbstractDay {
 
     @Override
     public void executePartA() {
-        String filename = InputDay04.inputs;
+        String filename = Inputs.DAY04_INPUT;
         int result = partA(filename);
-        System.out.println(String.format("PartA Ans: " + formatAnswer(result)));
+        System.out.println("PartA Ans: " + formatAnswer(result));
     }
 
     public int partA(String filename) {
@@ -40,8 +40,8 @@ public class Day04 extends AbstractDay {
 
     public boolean validMap(Map<String, String> map) {
         for (Map.Entry<String, String> m : map.entrySet()) {
-            String val = m.getValue().toString();
-            String key = m.getKey().toString();
+            String val = m.getValue();
+            String key = m.getKey();
             if (key.equals("byr")) {
                 if (val.length() < 4) {
                     return false;
@@ -177,9 +177,9 @@ public class Day04 extends AbstractDay {
 
     @Override
     public void executePartB() {
-        String filename = InputDay04.inputs;
+        String filename = Inputs.DAY04_INPUT;
         int result = partB(filename);
-        System.out.println(String.format("PartB Ans: " + formatAnswer(result)));
+        System.out.println("PartB Ans: " + formatAnswer(result));
     }
 
     public int partB(String filename) {
@@ -208,25 +208,25 @@ public class Day04 extends AbstractDay {
     public ImmutableList<Map<String, String>> buildList(String filename) {
 
         BufferedReader reader;
-        ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
+        ArrayList<Map<String, String>> list = new ArrayList<>();
         try {
             reader =
                     new BufferedReader(new FileReader("d:\\Git\\AdventOfCode2020\\src\\inputs\\" + filename));
             String rawLine = reader.readLine();
-            String combined = "";
+            StringBuilder combined = new StringBuilder();
             boolean eof = false;
-            while (eof == false) {
+            while (!eof) {
                 if (rawLine == null || rawLine.isEmpty()) {
-                    String[] parts = combined.trim().split(" ");
-                    Map<String, String> map = new HashMap<String, String>();
-                    for (int i = 0; i < parts.length; i++) {
-                        String[] field = parts[i].split(":");
+                    String[] parts = combined.toString().trim().split(" ");
+                    Map<String, String> map = new HashMap<>();
+                    for (String part : parts) {
+                        String[] field = part.split(":");
                         map.put(field[0], field[1]);
                     }
-                    combined = "";
+                    combined = new StringBuilder();
                     list.add(map);
                 } else {
-                    combined += " " + rawLine;
+                    combined.append(" ").append(rawLine);
                 }
 
                 if (rawLine != null) {

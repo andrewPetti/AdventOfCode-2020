@@ -1,6 +1,6 @@
 package com.chemies.AoC2020.day;
 
-import com.chemies.AoC2020.data.*;
+import com.chemies.AoC2020.data.Inputs;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,11 +17,11 @@ class Day06Test {
 
     @Test
     public void partA_sumOfAllYES() {
-        assertEquals(11, _subject.partA(InputsDay06.SAMPLE));
+        assertEquals(11, _subject.partA(Inputs.DAY06_SAMPLE));
     }
 
     @Test
     public void partB_sumWherePArtyAllYES() {
-        assertEquals(6L, _subject.partB(InputsDay06.SAMPLE));
+        assertEquals(6L, _subject.partB(Inputs.DAY06_SAMPLE));
     }
 }
