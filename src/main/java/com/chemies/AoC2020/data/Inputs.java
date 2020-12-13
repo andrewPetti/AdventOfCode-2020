@@ -7,6 +7,8 @@ public class Inputs {
 
     public final static String DAY03_SAMPLE = "day03Sample.txt";
     public final static String DAY03_INPUT = "day03Inputs.txt";
+    public static final String DAY13_INPUT = "day13Inputs.txt";
+    public static final String DAY13_SAMPLE = "day13Sample.txt";
 
     public static String DAY04_INPUT = "day04Inputs.txt";
     public static String DAY04_SAMPLE = "day04Sample.txt";
