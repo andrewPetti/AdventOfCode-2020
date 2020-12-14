@@ -29,5 +29,6 @@ public class Inputs {
 
     public static final String DAY14_INPUT = "day14Inputs.txt";
     public static final String DAY14_SAMPLE = "day14Sample.txt";
+    public static final String DAY14_SAMPLE_B = "day14SampleB.txt";
 
 }
