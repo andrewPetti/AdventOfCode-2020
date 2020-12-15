@@ -1,11 +1,6 @@
 package com.chemies.AoC2020.day;
 
-import com.chemies.AoC2020.data.Inputs;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Day15 extends AbstractDay {
     @Override
@@ -15,10 +10,15 @@ public class Day15 extends AbstractDay {
     }
 
     int partA(String startingNumbers) {
+        return findNumberAtIthIteration(startingNumbers, 2020);
+    }
+
+    private int findNumberAtIthIteration(String startingNumbers, int stopAt) {
         String[] numbers = startingNumbers.split(",");
 
         int lastNumber = Integer.parseInt(numbers[numbers.length - 1]);
 
+        ArrayList<Integer> spoken = new ArrayList<>();
         Map<Integer, ArrayList<Integer>> spokenMap = new HashMap<>();//initializeMap(numbers);
         for (int i = 0; i < numbers.length; i++) {
             int key = Integer.parseInt(numbers[i]);
@@ -27,11 +27,11 @@ public class Day15 extends AbstractDay {
             ArrayList<Integer> list = new ArrayList<>();
             list.add(pos);
             spokenMap.put(key, list);
+            spoken.add(key);
         }
-
         int pos = spokenMap.size() + 1;
         boolean lastWasNew = true;
-        while (pos <= 2020) {
+        while (pos <= stopAt) {
             if (lastWasNew) {
                 lastNumber = 0;
             } else {
@@ -46,9 +46,10 @@ public class Day15 extends AbstractDay {
                 spokenMap.put(lastNumber, new ArrayList<>(Collections.singletonList(pos)));
             }
             //addToMap(spokenMap, lastNumber, pos);
-
+            spoken.add(lastNumber);
             pos++;
         }
+        System.out.println(Arrays.toString(spoken.toArray()));
         return lastNumber;
     }
 
@@ -78,12 +79,12 @@ public class Day15 extends AbstractDay {
 
     @Override
     public void executePartB() {
-        long result = partB(Inputs.DAY15_INPUT);
+        long result = partB("17,1,3,16,19,0", 30000000);
         System.out.println("PartB Ans: " + formatAnswer(result));
     }
 
-    int partB(String filename) {
-        return 0;
+    int partB(String numbers, int stopAt) {
+        return findNumberAtIthIteration(numbers, stopAt);
     }
 
     @Override

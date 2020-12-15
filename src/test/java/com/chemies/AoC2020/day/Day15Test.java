@@ -1,6 +1,5 @@
 package com.chemies.AoC2020.day;
 
-import com.chemies.AoC2020.data.Inputs;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -59,6 +58,12 @@ class Day15Test {
     @Test
     void partB() {
         assertEquals(-1
-                , _subject.partB(Inputs.DAY15_SAMPLE));
+                , _subject.partB("1,1,1", 1));
+    }
+
+    @Test
+    void partB_a() {
+        assertEquals(175594,
+                _subject.partB("0,3,6", 30000000));
     }
 }
