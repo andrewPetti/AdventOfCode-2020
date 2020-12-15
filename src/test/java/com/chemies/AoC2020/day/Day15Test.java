@@ -16,8 +16,44 @@ class Day15Test {
 
     @Test
     void partA() {
-        assertEquals(-1
-                , _subject.partA(Inputs.DAY15_SAMPLE));
+        assertEquals(436
+                , _subject.partA("0,3,6"));
+    }
+
+    @Test
+    void partA_a() {
+        assertEquals(1
+                , _subject.partA("1,3,2"));
+    }
+
+    @Test
+    void partA_b() {
+        assertEquals(10
+                , _subject.partA("2,1,3"));
+    }
+
+    @Test
+    void partA_c() {
+        assertEquals(27
+                , _subject.partA("1,2,3"));
+    }
+
+    @Test
+    void partA_d() {
+        assertEquals(78
+                , _subject.partA("2,3,1"));
+    }
+
+    @Test
+    void partA_e() {
+        assertEquals(438
+                , _subject.partA("3,2,1"));
+    }
+
+    @Test
+    void partA_f() {
+        assertEquals(1836
+                , _subject.partA("3,1,2"));
     }
 
     @Test
