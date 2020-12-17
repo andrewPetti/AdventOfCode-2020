@@ -55,12 +55,11 @@ class Day15Test {
                 , _subject.partA("3,1,2"));
     }
 
-    @Test
+    /*@Test
     void partB() {
         assertEquals(-1
                 , _subject.partB("1,1,1", 1));
-    }
-
+    }*/
     @Test
     void partB_a() {
         assertEquals(175594,

@@ -1,6 +1,7 @@
 package com.chemies.AoC2020.day;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Day15 extends AbstractDay {
     @Override
@@ -9,51 +10,67 @@ public class Day15 extends AbstractDay {
         System.out.println("PartA Ans: " + formatAnswer(result));
     }
 
-    int partA(String startingNumbers) {
-        return findNumberAtIthIteration(startingNumbers, 2020);
+    Long partA(String startingNumbers) {
+        return findNumberAtIthIteration(startingNumbers, 2020L);
     }
 
-    private int findNumberAtIthIteration(String startingNumbers, int stopAt) {
+    private Long findNumberAtIthIteration(String startingNumbers, Long stopAt) {
         String[] numbers = startingNumbers.split(",");
 
-        int lastNumber = Integer.parseInt(numbers[numbers.length - 1]);
+        Long lastNumber = Long.parseLong(numbers[numbers.length - 1]);
 
-        ArrayList<Integer> spoken = new ArrayList<>();
-        Map<Integer, ArrayList<Integer>> spokenMap = new HashMap<>();//initializeMap(numbers);
+//        Map<Long, Pair<Long, Long>> spokenMap = new HashMap<>();
+        Map<Long, Long[]> spokenMap = new HashMap<>();
         for (int i = 0; i < numbers.length; i++) {
-            int key = Integer.parseInt(numbers[i]);
-            int pos = i + 1;
-
-            ArrayList<Integer> list = new ArrayList<>();
-            list.add(pos);
-            spokenMap.put(key, list);
-            spoken.add(key);
+            Long key = Long.parseLong(numbers[i]);
+            Long pos = Long.valueOf(i + 1);
+            Long[] pair = new Long[2];
+            pair[0] = -1L;
+            pair[1] = pos;
+//            spokenMap.put(key, Pair.with(-1L, pos));
+            spokenMap.put(key, pair);
         }
-        int pos = spokenMap.size() + 1;
+        Long pos = Long.valueOf(spokenMap.size() + 1);
         boolean lastWasNew = true;
+        Long currentNumber = -1L;
         while (pos <= stopAt) {
-            if (lastWasNew) {
-                lastNumber = 0;
+            //Pair<Long, Long> lastNumberInfo = spokenMap.get(lastNumber);
+            Long[] longs = spokenMap.get(lastNumber);
+//            if (lastNumberInfo.getValue0() == -1L) {
+            if (longs[0] == -1L) {
+                currentNumber = 0L;
             } else {
-                ArrayList<Integer> ids = spokenMap.get(lastNumber);
-                lastNumber = ids.get(ids.size() - 1) - ids.get(ids.size() - 2);
+                //currentNumber = lastNumberInfo.getValue1() - lastNumberInfo.getValue0();
+                currentNumber = longs[1] - longs[0];
             }
-            lastWasNew = !spokenMap.containsKey(lastNumber);
 
-            if (spokenMap.containsKey(lastNumber)) {
-                spokenMap.get(lastNumber).add(pos);
+            if (spokenMap.containsKey(currentNumber)) {
+//                Pair<Long, Long> currentNumberInfo = spokenMap.get(currentNumber);
+                //Long[] longs1 = spokenMap.get(currentNumber);
+                //currentNumberInfo.setAt0(currentNumberInfo.getValue1());
+                // currentNumberInfo.setAt1(pos);
+                //spokenMap.replace(currentNumber, Pair.with(currentNumberInfo.getValue1(), pos));
+                //longs[0] = longs[1];
+                //longs[1] = pos;
+                //spokenMap.get(currentNumber).setAt0(currentNumberInfo.getValue1());
+                //spokenMap.get(currentNumber).setAt1(pos);
+                spokenMap.get(currentNumber)[0] = spokenMap.get(currentNumber)[1];
+                spokenMap.get(currentNumber)[1] = pos;
             } else {
-                spokenMap.put(lastNumber, new ArrayList<>(Collections.singletonList(pos)));
+                Long[] pair = new Long[2];
+                pair[0] = -1L;
+                pair[1] = pos;
+                spokenMap.put(currentNumber, pair);
+                //spokenMap.put(currentNumber, Pair.with(-1L, pos));
             }
-            //addToMap(spokenMap, lastNumber, pos);
-            spoken.add(lastNumber);
+
+            lastNumber = currentNumber;
             pos++;
         }
-        System.out.println(Arrays.toString(spoken.toArray()));
         return lastNumber;
     }
 
-    private Map<Integer, ArrayList<Integer>> initializeMap(String[] numbers) {
+/*    private Map<Integer, ArrayList<Integer>> initializeMap(String[] numbers) {
         Map<Integer, ArrayList<Integer>> map = new HashMap<>();
         for (int i = 0; i < numbers.length; i++) {
             int key = Integer.parseInt(numbers[i]);
@@ -67,23 +84,25 @@ public class Day15 extends AbstractDay {
             }
         }
         return Map.copyOf(map);
-    }
-
+    }*/
+/*
     private void addToMap(Map<Integer, ArrayList<Integer>> spokenMap, int key, int pos) {
         if (spokenMap.containsKey(key)) {
             spokenMap.get(key).add(pos);
         } else {
-            spokenMap.put(key, new ArrayList<>(Collections.singletonList(pos)));
+
         }
-    }
+        spokenMap.put(key, new ArrayList<>(Collections.singletonList(pos)));
+    }*/
+
 
     @Override
     public void executePartB() {
-        long result = partB("17,1,3,16,19,0", 30000000);
+        long result = partB("17,1,3,16,19,0", 30000000L);
         System.out.println("PartB Ans: " + formatAnswer(result));
     }
 
-    int partB(String numbers, int stopAt) {
+    long partB(String numbers, long stopAt) {
         return findNumberAtIthIteration(numbers, stopAt);
     }
 
