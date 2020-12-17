@@ -38,4 +38,8 @@ public class Inputs {
     public static final String DAY16_SAMPLE = "day16Sample.txt";
     public static final String DAY16_INPUT = "day16Inputs.txt";
 
+    public static final String DAY17_INPUT = "day17Inputs.txt";
+    public static final String DAY17_SAMPLE = "day16Sample.txt";
+
+
 }
