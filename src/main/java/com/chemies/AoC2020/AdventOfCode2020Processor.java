@@ -80,6 +80,8 @@ public class AdventOfCode2020Processor {
                     case 21:
                     case 22:
                     case 23:
+                        day = new Day18();
+                        break;
                     case 24:
                     default:
                         System.out.printf("Day %d is currently not implemented. Please choose again.%n", choice);
