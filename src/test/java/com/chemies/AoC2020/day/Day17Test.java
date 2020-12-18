@@ -1,6 +1,6 @@
 package com.chemies.AoC2020.day;
 
-import com.chemies.AoC2020.data.Inputs;
+import com.google.common.collect.ImmutableList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,13 +16,16 @@ class Day17Test {
 
     @Test
     void partA() {
-        assertEquals(71
-                , _subject.partA(Inputs.DAY17_SAMPLE));
+        ImmutableList<char[]> inputs = ImmutableList.of(".#.".toCharArray(),
+                "..#".toCharArray(),
+                "###".toCharArray());
+        assertEquals(112
+                , _subject.partA(inputs));
     }
 
     @Test
     void partB() {
         assertEquals(71
-                , _subject.partA(Inputs.DAY17_SAMPLE));
+                , _subject.partA(ImmutableList.of("".toCharArray())));
     }
 }
