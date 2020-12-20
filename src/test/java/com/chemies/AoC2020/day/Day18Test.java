@@ -1,10 +1,7 @@
 package com.chemies.AoC2020.day;
 
-import org.javatuples.Pair;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -54,11 +51,6 @@ class Day18Test {
                 , _subject.processLine("((2 + 4 * 9) * (6 + 9 * 8 + 6) + 6) + 2 + 4 * 2"));
     }
 
-    @Test
-    void partA_findBrackets() {
-        ArrayList<Pair<Integer, Integer>> brackets = _subject.findBrackets("1+(2*3)+(4*(5+6))");
-        System.out.println(brackets);
-    }
 
     @Test
     void partB() {
@@ -77,6 +69,7 @@ class Day18Test {
 
     @Test
     void partB_c() {
+        _subject.solveB();
         assertEquals(46
                 , _subject.processLine("2 * 3 + (4 * 5)"));
     }

@@ -32,8 +32,7 @@ public class Day18 extends AbstractDay {
     long partA(String filename) {
         ImmutableList<String> strings = _fileHelper.fileToStringList(filename);
         _solver = this::solve;
-        long sum = strings.stream().mapToLong(this::processLine).sum();
-        return sum;
+        return strings.stream().mapToLong(this::processLine).sum();
     }
 
     long processLine(String line) {
@@ -44,8 +43,7 @@ public class Day18 extends AbstractDay {
             long val = _solver.solve(line.substring(solvableBracket.get().getValue0() + 1,
                     solvableBracket.get().getValue1()));
             StringBuilder builder = new StringBuilder();
-            builder.append(line.substring(0, solvableBracket.get().getValue0()));
-            builder.append(Long.toString(val));
+            builder.append(line, 0, solvableBracket.get().getValue0()).append(val);
             if (solvableBracket.get().getValue1() < line.length() - 1) {
                 builder.append(line.substring(solvableBracket.get().getValue1() + 1));
             }
@@ -53,8 +51,7 @@ public class Day18 extends AbstractDay {
             line = builder.toString();
             solvableBracket = findSolvableBracket(line);
         }
-        long ans = _solver.solve(line);
-        return ans;
+        return _solver.solve(line);
     }
 
     Optional<Pair<Integer, Integer>> findSolvableBracket(String line) {
@@ -76,7 +73,7 @@ public class Day18 extends AbstractDay {
         int pos = 1;
         long ans = Long.parseLong(parts[0]);
         while (pos < parts.length) {
-            Long val = Long.parseLong(parts[pos + 1]);
+            long val = Long.parseLong(parts[pos + 1]);
             if (parts[pos].equals("+")) {
                 ans += val;
             } else {
@@ -88,10 +85,43 @@ public class Day18 extends AbstractDay {
     }
 
     private Long solveB(String line) {
-        return 0L;
+
+        String doneAddition = doAddition(line);
+
+        String[] numbers = doneAddition.split(" [*] ");
+        long ans = Long.parseLong(numbers[0]);
+        for (int i = 1; i < numbers.length; i++) {
+            ans *= Long.parseLong(numbers[i]);
+        }
+
+        return ans;
     }
 
-    
+    private String doAddition(String line) {
+        int pos = 0;
+        while (CharMatcher.is('+').countIn(line) > 0) {
+            String[] s = line.split(" ");
+            if (s[pos].equals("+")) {
+                Long val = Long.parseLong(s[pos - 1]) + Long.parseLong(s[pos + 1]);
+                StringBuilder builder = new StringBuilder();
+                //builder.append(line.substring(0, pos - 1));
+                for (int i = 0; i < pos - 1; i++) {
+                    builder.append(" ").append(s[i]);
+                }
+                builder.append(" ").append(val);
+                for (int i = pos + 2; i < s.length; i++) {
+                    builder.append(" ").append(s[i]);
+                }
+                line = doAddition(builder.toString().trim());
+                pos = 0;
+            } else {
+                pos++;
+            }
+        }
+        return line;
+    }
+
+
     private boolean isNumber(char value) {
         return CharMatcher.inRange('0', '9').matches(value);
     }
@@ -121,8 +151,7 @@ public class Day18 extends AbstractDay {
     Long partB(String filename) {
         ImmutableList<String> strings = _fileHelper.fileToStringList(filename);
         _solver = this::solveB;
-        long sum = strings.stream().mapToLong(this::processLine).sum();
-        return sum;
+        return strings.stream().mapToLong(this::processLine).sum();
     }
 
     @Override
